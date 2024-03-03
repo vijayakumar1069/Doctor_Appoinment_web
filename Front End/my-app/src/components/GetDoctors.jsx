@@ -45,7 +45,7 @@ const GetDoctors = () => {
 
   const fetchDoctorDetails = async () => {
     const fetchdata = await fetch(
-      `http://localhost:3000/api/admin/gettingdcotordetails/${currentUser._id}`,
+      `https://doctor-appoinment-web.onrender.com/api/admin/gettingdcotordetails/${currentUser._id}`,
       {
         headers: {
           "content-type": "application/json",

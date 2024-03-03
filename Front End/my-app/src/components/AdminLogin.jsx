@@ -20,7 +20,7 @@ const AdminLogin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const result = await fetch(`http://localhost:3000/api/admin/login`, {
+      const result = await fetch(`https://doctor-appoinment-web.onrender.com/api/admin/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

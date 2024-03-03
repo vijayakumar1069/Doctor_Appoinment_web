@@ -20,7 +20,7 @@ const Contact = () => {
     try {
       e.preventDefault();
       const fetching = await fetch(
-        "http://localhost:3000/api/user/bookingappointment",
+        "https://doctor-appoinment-web.onrender.com/api/user/bookingappointment",
         {
           method: "POST",
           headers: {
