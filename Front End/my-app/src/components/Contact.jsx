@@ -1,29 +1,51 @@
-import React, { useState } from 'react';
-
+import React, { useState } from "react";
+import f1 from "../assets/f1.jpg";
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    mobile: '',
-    email: '',
-    department: '',
-    date: '',
-    time: '',
+    name: "",
+    mobile: "",
+    email: "",
+    department: "Cardiologist",
+    date: "",
+    time: "",
   });
+  const [error, setError] = useState(false);
+  const [added, setAdded] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // You can handle form submission logic here
-    console.log('Form submitted:', formData);
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      const fetching = await fetch(
+        "http://localhost:3000/api/user/bookingappointment",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+      const data = await fetching.json();
+      if (data.success === false) {
+        console.log(data.message);
+        return setError(data.message);
+      }
+      setAdded(data.result);
+    } catch (error) {
+      setError(error);
+    }
   };
 
   return (
     <div className="bg-gray-100 min-h-screen py-8 flex justify-center items-center">
       <div className="w-full max-w-md bg-white rounded-md p-8 shadow-md">
-        <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">Contact Us</h1>
+        <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
+          Contact Us
+        </h1>
 
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -116,6 +138,17 @@ const Contact = () => {
             Submit
           </button>
         </form>
+        {error && (
+          <div className="mt-4 text-red-500 text-center font-semibold">
+            {error}
+          </div>
+        )}
+
+        {added && (
+          <div className="mt-4 text-green-500 text-center font-semibold">
+            {added}
+          </div>
+        )}
       </div>
     </div>
   );

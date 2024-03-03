@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,7 +14,7 @@ const Navbar = () => {
       {/* Logo on the left */}
       <div className="flex items-center">
         <div className="font-bold text-2xl md:text-3xl lg:text-4xl text-gray-800 mr-4">
-          MyClinic
+        <NavLink href="/">MY Clinic</NavLink>
         </div>
       </div>
 
@@ -36,9 +37,9 @@ const Navbar = () => {
 
         {/* Login Button (visible on larger screens) */}
         <div className="hidden md:block">
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          <Link to={"/adminlogin"} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Login
-          </button>
+          </Link>
         </div>
       </div>
 
@@ -46,7 +47,7 @@ const Navbar = () => {
       <div
         className={`${
           isMenuOpen ? "block" : "hidden"
-        } md:hidden fixed top-0 left-0 h-screen w-screen bg-white z-50 p-4`}
+        } md:hidden fixed top-0 left-0  h-screen w-screen bg-white z-50 p-4`}
       >
         <div className="flex flex-col space-y-4">
           <NavLink href="/">Home</NavLink>
@@ -55,8 +56,8 @@ const Navbar = () => {
           <NavLink href="/contact">Contact Us</NavLink>
         </div>
         {/* Login Button (visible on mobile) */}
-        <button className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          Login
+        <button  className="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          <NavLink href={"/adminlogin"}>Login</NavLink>
         </button>
       </div>
     </div>
