@@ -58,7 +58,7 @@ const patientDetails = async (req, res, next) => {
     return next(errorHandler(404, "your not authorized to access this page "));
   }
   const result = await PATIENT.find();
-  console.log(result);
+  // console.log(result);
 
   res.status(200).json({ result });
 };

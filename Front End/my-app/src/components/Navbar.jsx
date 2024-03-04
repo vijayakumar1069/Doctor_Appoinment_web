@@ -14,7 +14,7 @@ const Navbar = () => {
       {/* Logo on the left */}
       <div className="flex items-center">
         <div className="font-bold text-2xl md:text-3xl lg:text-4xl text-gray-800 mr-4">
-        <NavLink href="/">MY Clinic</NavLink>
+          <NavLink href="/">MY Clinic</NavLink>
         </div>
       </div>
 
@@ -37,7 +37,10 @@ const Navbar = () => {
 
         {/* Login Button (visible on larger screens) */}
         <div className="hidden md:block">
-          <Link to={"/adminlogin"} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          <Link
+            to={"/adminlogin"}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
             Login
           </Link>
         </div>
@@ -56,7 +59,7 @@ const Navbar = () => {
           <NavLink href="/contact">Contact Us</NavLink>
         </div>
         {/* Login Button (visible on mobile) */}
-        <button  className="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <button className="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
           <NavLink href={"/adminlogin"}>Login</NavLink>
         </button>
       </div>
